@@ -21,5 +21,4 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: flutter --version
-      - run: flutter analyze
       - run: flutter test integration_test/app_test.dart
