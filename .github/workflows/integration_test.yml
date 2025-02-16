@@ -20,5 +20,16 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter pub get
-      - run: flutter --version
-      - run: flutter test integration_test/app_test.dart
+      - name: Install Android SDK
+        uses: malinskiy/action-android/install-sdk@release/0.1.2
+      - run: echo $ANDROID_HOME
+      - run: sdkmanager --install "ndk;23.1.7779620"
+      - run: sdkmanager --install "build-tools;30.0.3"
+      - run: flutter pub get
+      - uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
+        with:
+          cmd: flutter test integration_test/app_test.dart
+          api: 31
+          cmdOptions: -no-snapshot-save -noaudio -no-boot-anim -cores 2 -memory 3072 -no-window
+          tag: google_apis
+          abi: x86_64
