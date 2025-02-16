@@ -1,0 +1,2 @@
+/Users/iffatahmedkhan/Personal/hotel-search/android/app/.cxx/Debug/625g5l6v/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/iffatahmedkhan/Personal/hotel-search/android/app/.cxx/Debug/625g5l6v/armeabi-v7a/CMakeFiles/rebuild_cache.dir

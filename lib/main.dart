@@ -24,6 +24,8 @@ void main() async {
   EquatableConfig.stringify = true;
   Bloc.observer = SimpleBlocObserver();
   Hive.defaultDirectory = (await getApplicationDocumentsDirectory()).path;
+  print((await getTemporaryDirectory()).path);
+  print('Hive.defaultDirectory: ${Hive.defaultDirectory}');
   LocaleSettings.useDeviceLocale();
   configureDependencies();
   runApp(App());
