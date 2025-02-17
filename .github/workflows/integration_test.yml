@@ -13,7 +13,11 @@ jobs:
     strategy:
       matrix: 
         device:
-          - "Pixel 5"
+          - "pixel"
+          - "pixel_xl"
+          - "pixel_c"
+          - "Nexus 6"
+
     steps:
       - uses: actions/checkout@v3
       
