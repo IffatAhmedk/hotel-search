@@ -36,7 +36,7 @@ jobs:
       - name: Start Android Emulator and Run Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 31
+          api-level: 26
           arch: x86_64
           profile: ${{ matrix.device }}
           script: flutter test integration_test/app_test.dart
