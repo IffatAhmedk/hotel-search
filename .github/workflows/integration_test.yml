@@ -19,17 +19,19 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - run: flutter pub get
-      - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.1.2
-      - run: echo $ANDROID_HOME
-      - run: sdkmanager --install "ndk;23.1.7779620"
-      - run: sdkmanager --install "build-tools;30.0.3"
-      - run: flutter pub get
-      - uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
+          
+      - name: Install Flutter dependencies
+        run: flutter pub get
+      
+      - name: Start Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
         with:
-          cmd: flutter test integration_test/app_test.dart
-          api: 31
-          cmdOptions: -no-snapshot-save -noaudio -no-boot-anim -cores 2 -memory 3072 -no-window
-          tag: google_apis
-          abi: x86_64
+          api-level: 31
+          target: google_apis
+          arch: x86_64
+          profile: Nexus 6
+          ram-size: 2048M
+          disable-animations: true
+      
+      - name: Run Flutter Tests
+        run: flutter test --flavor integration_test
